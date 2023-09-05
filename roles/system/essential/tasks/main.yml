@@ -13,3 +13,17 @@
     use: apt
     state: present
   when: additional_packages is defined
+
+- name: Disable SSH password auth
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: "^#PasswordAuthentication yes"
+    line: "PasswordAuthentication no"
+  register: sshd_config
+
+- name: Enable passwordless sudo for "{{ username }}" user
+  lineinfile:
+    path: /etc/sudoers
+    regexp: "^%wheel%"
+    line: "{{ username }} ALL=(ALL) NOPASSWD: ALL"
+    validate: "/usr/sbin/visudo -cf %s"
