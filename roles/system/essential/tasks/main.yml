@@ -1,0 +1,15 @@
+- name: Update packages
+  apt:
+    update_cache: true
+    upgrade: "yes"
+
+- name: Auto-remove old packages
+  apt:
+    autoremove: true
+
+- name: Install additional packages (apt)
+  package:
+    name: "{{ additional_packages }}"
+    use: apt
+    state: present
+  when: additional_packages is defined
