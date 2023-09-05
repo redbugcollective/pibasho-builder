@@ -27,3 +27,26 @@
     regexp: "^%wheel%"
     line: "{{ username }} ALL=(ALL) NOPASSWD: ALL"
     validate: "/usr/sbin/visudo -cf %s"
+
+- name: Restart SSH daemon
+  service:
+    name: sshd
+    state: restarted
+  when: sshd_config.changed
+
+- name: Set timezone
+  lineinfile:
+    path: /etc/timezone
+    regexp: "^(.*)"
+    line: "{{ timezone }}"
+  when: timezone is defined
+
+- name: Check if reboot is required
+  stat:
+    path: /var/run/reboot-required
+  register: reboot_required_file
+
+- name: Reboot if required
+  reboot:
+    msg: Rebooting due to a kernel update
+  when: reboot_required_file.stat.exists
