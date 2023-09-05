@@ -1,0 +1,49 @@
+---
+- name: Include Docker package variables
+  include_vars: "packages.yml"
+
+- name: Install required system packages
+  package:
+    state: present
+    name: "{{ docker_deps }}"
+
+- name: Install Docker
+  block:
+    - name: Add Docker GPG apt Key
+      apt_key:
+        url: https://download.docker.com/linux/raspbian/gpg
+        state: present
+    - name: Add Docker Repository
+      apt_repository:
+        repo: deb https://download.docker.com/linux/raspbian {{ ansible_distribution_release }} stable
+        state: present
+
+- name: Update apt and install docker-ce
+  apt:
+    update_cache: true
+    name: "{{ docker_packages }}"
+    state: present
+
+- name: Ensure group docker exists
+  group:
+    name: docker
+    state: present
+
+- name: Add user "{{ username }}" to group docker
+  user:
+    name: '{{ username }}'
+    groups:
+      - docker
+    append: true
+
+- name: Create the Docker data directory
+  file:
+    path: /opt/docker/data
+    state: directory
+    mode: '0755'
+
+- name: Make sure Docker is running and enabled
+  service:
+    name: docker
+    state: started
+    enabled: true

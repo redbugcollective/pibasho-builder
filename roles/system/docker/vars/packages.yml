@@ -1,0 +1,8 @@
+---
+docker_deps:
+  - 'apt-transport-https'
+  - 'ca-certificates'
+
+docker_packages:
+  - 'docker-ce'
+  - 'docker-compose'

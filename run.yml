@@ -6,3 +6,7 @@
        tags:
           - essential
           - system
+     - role: system/docker
+       tags:
+          - docker
+          - system
