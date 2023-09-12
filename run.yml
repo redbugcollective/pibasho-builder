@@ -2,15 +2,15 @@
 - hosts: all
   become: true
   roles:
-     - role: system/essential
-       tags:
-          - essential
-          - system
-     - role: system/docker
-       tags:
-          - docker
-          - system
-          - containers
-      - role: containers/dokuwiki
-       tags:
-          - containers
+    - role: system/essential
+      tags:
+        - essential
+        - system
+    - role: system/docker
+      tags:
+        - docker
+        - system
+        - containers
+    - role: apps/dokuwiki
+      tags:
+        - containers
