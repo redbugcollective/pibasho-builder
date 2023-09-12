@@ -30,7 +30,7 @@
 
 - name: Restart SSH daemon
   service:
-    name: sshd
+    name: ssh
     state: restarted
   when: sshd_config.changed
 

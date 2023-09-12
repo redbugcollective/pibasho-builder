@@ -12,7 +12,8 @@
 
 Your development machine should probably run Linux or these instructions will be wrong.
 
-* Install ansible `sudo apt install ansible`
+* Install python3
+* Install ansible `pip install ansible`
 * Optional: Install `ansible-lint` using `sudo apt install ansible-lint`
 * Ensure you have a ssh key created
 
