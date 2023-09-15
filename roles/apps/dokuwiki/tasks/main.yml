@@ -3,3 +3,10 @@
     name: dokuwiki
     state: present
     gid: "{{ gid }}"
+
+- name: Dokuwiki user
+  user:
+    name: dokuwiki
+    state: present
+    uid: "{{ uid }}"
+    group: dokuwiki
