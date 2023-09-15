@@ -1,0 +1,5 @@
+- name: Dokuwiki group
+  group:
+    name: dokuwiki
+    state: present
+    gid: "{{ gid }}"
