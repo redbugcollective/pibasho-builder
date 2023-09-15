@@ -1,3 +1,4 @@
 username: pi
 additional_packages:
 timezone: Australia/Melbourne
+docker_dir: /opt/docker/data
