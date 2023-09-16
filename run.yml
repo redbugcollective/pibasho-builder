@@ -14,3 +14,7 @@
       tags:
         - containers
         - dokuwiki
+    - role: apps/nginx-proxy
+      tags:
+        - containers
+        - proxy

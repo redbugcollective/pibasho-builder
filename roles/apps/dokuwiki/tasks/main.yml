@@ -32,7 +32,7 @@
      volumes:
         - '{{ docker_dir }}/{{ container_name }}:/config'
      ports:
-        - '80:80'
+        - '{{ http_port }}:{{ http_port }}'
      restart_policy: unless-stopped
 
 - name: Install {{ template_name }} template archive

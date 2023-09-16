@@ -1,0 +1,10 @@
+- name: Make sure the {{ container_name }} container is created and is running
+  docker_container:
+     name: "{{ container_name }}"
+     image: nginxproxy/nginx-proxy
+     state: 'started'
+     volumes:
+        - /var/run/docker.sock:/tmp/docker.sock:ro
+     ports:
+        - '80:80'
+     restart_policy: unless-stopped
