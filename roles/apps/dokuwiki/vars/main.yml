@@ -2,3 +2,5 @@
 container_name: dokuwiki
 gid: "2001"
 uid: "2001"
+template_name: "ad-hominem"
+template_release: "2023-09-09"

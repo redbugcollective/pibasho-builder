@@ -34,3 +34,21 @@
      ports:
         - '80:80'
      restart_policy: unless-stopped
+
+- name: Install {{ template_name }} template archive
+  unarchive:
+    src: https://github.com/saschaleib/dokuwiki-template-ad-hominem/archive/refs/tags/{{ template_release }}.tar.gz
+    dest: "{{ docker_dir }}/{{ container_name }}/dokuwiki/lib/tpl"
+    remote_src: yes
+    creates: "dokuwiki-template-{{ template_name }}-{{ template_release }}"
+    owner: dokuwiki
+    group: dokuwiki
+    mode: "440"
+
+- name: Create a symbolic link to template
+  file:
+    src: "{{ docker_dir }}/{{ container_name }}/dokuwiki/lib/tpl/dokuwiki-template-{{ template_name }}-{{ template_release }}"
+    dest: "{{ docker_dir }}/{{ container_name }}/dokuwiki/lib/tpl/{{ template_name }}"
+    owner: dokuwiki
+    group: dokuwiki
+    state: link
