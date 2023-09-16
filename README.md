@@ -17,3 +17,6 @@ Your development machine should probably run Linux or these instructions will be
 * Optional: Install `ansible-lint` using `sudo apt install ansible-lint`
 * Ensure you have a ssh key created
 
+## Proxy
+
+For more details see https://github.com/nginx-proxy/nginx-proxy

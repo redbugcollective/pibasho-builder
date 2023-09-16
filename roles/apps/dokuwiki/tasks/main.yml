@@ -22,18 +22,22 @@
 
 - name: Make sure the {{ container_name }} container is created and is running
   docker_container:
-     name: "{{ container_name }}"
-     image: lscr.io/linuxserver/dokuwiki:latest
-     state: 'started'
-     env:
-        PUID: "{{ uid  }}"
-        PGID: "{{ gid }}"
-        TZ: "{{ timezone }}"
-     volumes:
-        - '{{ docker_dir }}/{{ container_name }}:/config'
-     ports:
-        - '{{ http_port }}:{{ http_port }}'
-     restart_policy: unless-stopped
+    name: "{{ container_name }}"
+    image: lscr.io/linuxserver/dokuwiki:latest
+    state: 'started'
+    env:
+      PUID: "{{ uid  }}"
+      PGID: "{{ gid }}"
+      TZ: "{{ timezone }}"
+      VIRTUAL_HOST: "mojo.local"
+      VIRTUAL_PATH: "/wiki/"
+      VIRTUAL_DEST: "/"
+      VIRTUAL_PORT: "80"
+    volumes:
+      - '{{ docker_dir }}/{{ container_name }}:/config'
+    exposed:
+      - '80'
+    restart_policy: unless-stopped
 
 - name: Install {{ template_name }} template archive
   unarchive:
