@@ -43,12 +43,9 @@
     creates: "dokuwiki-template-{{ template_name }}-{{ template_release }}"
     owner: dokuwiki
     group: dokuwiki
-    mode: "440"
 
-- name: Create a symbolic link to template
-  file:
-    src: "{{ docker_dir }}/{{ container_name }}/dokuwiki/lib/tpl/dokuwiki-template-{{ template_name }}-{{ template_release }}"
-    dest: "{{ docker_dir }}/{{ container_name }}/dokuwiki/lib/tpl/{{ template_name }}"
-    owner: dokuwiki
-    group: dokuwiki
-    state: link
+- name: Set the dokuwiki template to {{ template_name }}
+  lineinfile:
+    path: "{{ docker_dir }}/{{ container_name }}/dokuwiki/conf/dokuwiki.php"
+    search_string: "$conf['template']"
+    line: "$conf['template']    = 'dokuwiki-template-{{ template_name }}-{{ template_release }}'; "

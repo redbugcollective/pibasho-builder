@@ -10,7 +10,7 @@
       tags:
         - docker
         - system
-        - containers
     - role: apps/dokuwiki
       tags:
         - containers
+        - dokuwiki
