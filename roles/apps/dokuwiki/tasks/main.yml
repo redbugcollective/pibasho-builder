@@ -13,24 +13,24 @@
 
 - name: Create the configuration directory
   file:
-     path: '{{ docker_dir }}/{{ container_name }}/config/'
+     path: '{{ docker_dir }}/{{ container_name }}'
      state: directory
      recurse: yes
      owner: dokuwiki
      group: dokuwiki
-     mode: "550"
+     mode: "770"
 
-# - name: Make sure the {{ container_name }} container is created and is running
-#   docker_container:
-#      name: "{{ container_name }}"
-#      image: lscr.io/linuxserver/dokuwiki:latest
-#      state: 'started'
-#      env:
-#         PUID: "{{ uid  }}"
-#         PGID: "{{ gid }}"
-#         TZ: "{{ timezone }}"
-#      volumes:
-#         - '{{ docker_dir }}/{{ container_name }}/config:/config'
-#      ports:
-#         - '3000:3000'
-#      restart_policy: unless-stopped
+- name: Make sure the {{ container_name }} container is created and is running
+  docker_container:
+     name: "{{ container_name }}"
+     image: lscr.io/linuxserver/dokuwiki:latest
+     state: 'started'
+     env:
+        PUID: "{{ uid  }}"
+        PGID: "{{ gid }}"
+        TZ: "{{ timezone }}"
+     volumes:
+        - '{{ docker_dir }}/{{ container_name }}:/config'
+     ports:
+        - '80:80'
+     restart_policy: unless-stopped
