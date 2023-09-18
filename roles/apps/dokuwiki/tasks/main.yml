@@ -29,7 +29,7 @@
       PUID: "{{ uid  }}"
       PGID: "{{ gid }}"
       TZ: "{{ timezone }}"
-      VIRTUAL_HOST: "{{ ansible_hostname }},{{ public_domain }}"
+      VIRTUAL_HOST: "{{ ansible_hostname }}.local,{{ public_domain }}"
       VIRTUAL_PATH: "/wiki/"
       VIRTUAL_DEST: "/"
       VIRTUAL_PORT: "80"
