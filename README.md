@@ -31,6 +31,10 @@ Your development machine should probably run Linux or these instructions will be
 
 Copy `hosts-example` in this directory to a new file called `hosts`. Replace the capitalized sections with the correct values for your needs.
 
+### Setup house_vars file
+
+Copy `house_vars_example.yml` in this directory to a new file called `house_vars.yml`. Change any values to suit your house.
+
 ## References
 
 For more details see https://github.com/nginx-proxy/nginx-proxy
