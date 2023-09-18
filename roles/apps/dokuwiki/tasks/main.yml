@@ -29,7 +29,7 @@
       PUID: "{{ uid  }}"
       PGID: "{{ gid }}"
       TZ: "{{ timezone }}"
-      VIRTUAL_HOST: "mojo.local"
+      VIRTUAL_HOST: "{{ ansible_hostname }},{{ public_domain }}"
       VIRTUAL_PATH: "/wiki/"
       VIRTUAL_DEST: "/"
       VIRTUAL_PORT: "80"
@@ -53,3 +53,9 @@
     path: "{{ docker_dir }}/{{ container_name }}/dokuwiki/conf/dokuwiki.php"
     search_string: "$conf['template']"
     line: "$conf['template']    = 'dokuwiki-template-{{ template_name }}-{{ template_release }}'; "
+
+- name: Set the dokuwiki title
+  lineinfile:
+    path: "{{ docker_dir }}/{{ container_name }}/dokuwiki/conf/dokuwiki.php"
+    search_string: "$conf['title']"
+    line: "$conf['title']    = 'Mojo Manor';"

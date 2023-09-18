@@ -2,6 +2,13 @@
 - hosts: all
   become: true
   roles:
+    - role: shared
+      tags:
+        - essential
+        - system
+        - docker
+        - containers
+        - proxy
     - role: system/essential
       tags:
         - essential

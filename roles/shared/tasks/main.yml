@@ -1,0 +1,3 @@
+- name: Load house variables, if this fails copy house_vars_example.yml to house_vars.yml
+  include_vars:
+    file: "house_vars.yml"
