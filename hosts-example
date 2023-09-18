@@ -1,2 +1,2 @@
 [home]
-pi ansible_host=mojo.local ansible_user=pi ansible_connection=ssh ansible_ssh_private_key_file=~/.ssh/id_ed25519
+pi ansible_host=HOUSENAME.local ansible_user=pi ansible_connection=ssh ansible_ssh_private_key_file=~/.ssh/PUBLIC-KEY_NAME
