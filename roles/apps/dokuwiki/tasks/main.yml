@@ -48,14 +48,13 @@
     owner: dokuwiki
     group: dokuwiki
 
-- name: Set the dokuwiki template to {{ template_name }}
-  lineinfile:
-    path: "{{ docker_dir }}/{{ container_name }}/dokuwiki/conf/dokuwiki.php"
-    search_string: "$conf['template']"
-    line: "$conf['template']    = 'dokuwiki-template-{{ template_name }}-{{ template_release }}'; "
-
-- name: Set the dokuwiki title
-  lineinfile:
-    path: "{{ docker_dir }}/{{ container_name }}/dokuwiki/conf/dokuwiki.php"
-    search_string: "$conf['title']"
-    line: "$conf['title']    = '{{ house_full_name }}';"
+- name: Setup dokuwiki local config
+  template:
+    src: ./templates/local.php.conf
+    dest: "{{ docker_dir }}/{{ container_name }}/dokuwiki/conf/local.php"
+    owner: dokuwiki
+    group: dokuwiki
+    mode: "770"
+  vars:
+    title: "{{ house_full_name }}"
+    template: 'dokuwiki-template-{{ template_name }}-{{ template_release }}'
