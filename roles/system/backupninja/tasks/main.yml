@@ -10,9 +10,20 @@
     use: apt
     state: present
 
-- name: Setup backupninja config for docker data
-  ansible.builtin.template:
+- name: Correct default config
+  lineinfile:
+    path: "/etc/backupninja.conf"
+    search_string: "reportprom = false"
+    line: "reportprom ="
+
+- name: Setup backupninja config for app data
+  template:
     src: ./templates/backupninja_rsync.conf
-    dest: "{{ backup_confs_dir  }}/docker_data.conf"
+    dest: "{{ backup_confs_dir  }}/app_data.rsync"
     owner: root
     group: root
+    mode: "660"
+  vars:
+    destination_host: "{{ backup_host }}"
+    destination_user: "{{ backup_user }}"
+    id_file: "/root/.ssh/{{ backups_sh_key_filename }}"

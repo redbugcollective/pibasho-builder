@@ -9,6 +9,7 @@
         - docker
         - containers
         - proxy
+        - backup
     - role: system/essential
       tags:
         - essential
