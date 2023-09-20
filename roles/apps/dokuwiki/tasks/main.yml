@@ -58,4 +58,4 @@
   lineinfile:
     path: "{{ docker_dir }}/{{ container_name }}/dokuwiki/conf/dokuwiki.php"
     search_string: "$conf['title']"
-    line: "$conf['title']    = 'Mojo Manor';"
+    line: "$conf['title']    = '{{ house_full_name }}';"

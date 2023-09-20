@@ -17,6 +17,10 @@
       tags:
         - docker
         - system
+    - role: system/backupninja
+      tags:
+        - backup
+        - system
     - role: apps/dokuwiki
       tags:
         - containers

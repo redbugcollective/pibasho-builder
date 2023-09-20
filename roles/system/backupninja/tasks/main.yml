@@ -1,0 +1,11 @@
+---
+- name: Create backup keypair
+  openssh_keypair:
+    path: "/root/.ssh/{{ backups_sh_key_filename }}"
+    type: rsa
+
+- name: Install backupninja package
+  package:
+    name: backupninja
+    use: apt
+    state: present
