@@ -9,3 +9,10 @@
     name: backupninja
     use: apt
     state: present
+
+- name: Setup backupninja config for docker data
+  ansible.builtin.template:
+    src: ./templates/backupninja_rsync.conf
+    dest: "{{ backup_confs_dir  }}/docker_data.conf"
+    owner: root
+    group: root
