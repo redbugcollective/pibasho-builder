@@ -1,5 +1,6 @@
 ---
 container_name: dokuwiki
+base_path: wiki
 gid: "2001"
 uid: "2001"
 http_port: "3001"

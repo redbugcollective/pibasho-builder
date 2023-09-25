@@ -10,6 +10,7 @@
         - containers
         - proxy
         - backup
+        - aquadoggo
     - role: system/essential
       tags:
         - essential
@@ -22,11 +23,15 @@
       tags:
         - backup
         - system
-    - role: apps/dokuwiki
-      tags:
-        - containers
-        - dokuwiki
     - role: apps/nginx-proxy
       tags:
         - containers
         - proxy
+    - role: apps/dokuwiki
+      tags:
+        - containers
+        - dokuwiki
+    - role: apps/oxbike
+      tags:
+        - containers
+        - oxbike

@@ -1,0 +1,14 @@
+- name: Make sure the {{ container_name }} container is created and is running
+  docker_container:
+    name: "{{ container_name }}"
+    image: redbugcollective/oxbike:latest
+    state: 'started'
+    restart_policy: unless-stopped
+    exposed:
+      - '80'
+    env:
+      VIRTUAL_HOST: "{{ ansible_hostname }}.local"
+      VIRTUAL_PATH: "/{{ base_path }}/"
+      VIRTUAL_DEST: "/"
+      VIRTUAL_PORT: "80"
+      FOO: "bar"
