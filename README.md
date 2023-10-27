@@ -1,4 +1,4 @@
-# RedBug Household Raspberry Pi Setup
+# Pibasho: The RedBug Household Raspberry Pi Setup
 
 This repo helps you setup a [Raspberry Pi](https://www.raspberrypi.com/) to be a server to provide your household (or other location) with local-first software on your local intranet.
 
