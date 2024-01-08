@@ -14,7 +14,7 @@ The particular Infrastructure as Code tool used by this repository is [Ansible](
 
 * Flash the SD card with Ubuntu Server 64bit.
 * Be sure to set a hostname for the PI
-* Your ssh key on the pi. Eg: `ssh-copy-id -i ~/.ssh/id_ed25519 pi@mojo.local`
+* Your ssh key on the pi. Eg: `ssh-copy-id -i ~/.ssh/id_ed25519 pi@radish.local`
 
 ### Controlling computer
 
