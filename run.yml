@@ -31,6 +31,10 @@
       tags:
         - containers
         - dokuwiki
+    - role: apps/pibasho
+      tags:
+        - containers
+        - pibasho
     - role: apps/oxbike
       tags:
         - containers

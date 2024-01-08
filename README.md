@@ -35,6 +35,16 @@ Copy `hosts-example` in this directory to a new file called `hosts`. Replace the
 
 Copy `house_vars_example.yml` in this directory to a new file called `house_vars.yml`. Change any values to suit your house.
 
+### Run the ansible playbook
+
+`ansible-playbook run.yml`
+
+## Maintenance
+
+### Run the playbook again anytime
+
+`ansible-playbook run.yml`
+
 ## References
 
 For more details see https://github.com/nginx-proxy/nginx-proxy
