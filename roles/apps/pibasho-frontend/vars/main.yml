@@ -1,0 +1,3 @@
+---
+container_name: pibasho-frontend
+base_path: admin
