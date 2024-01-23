@@ -1,0 +1,26 @@
+- name: Make sure the pibasho-frontend container is created and is running
+  docker_container:
+    name: pibasho-frontend
+    image: redbugcollective/pibasho-frontend:{{ pibasho_version }}
+    state: 'started'
+    restart_policy: unless-stopped
+    exposed:
+      - '80'
+    env:
+      VIRTUAL_HOST: "{{ ansible_hostname }}.local"
+      VIRTUAL_PATH: "/{{ base_path }}/"
+      VIRTUAL_PORT: "80"
+      VITE_API_HOST: "{{ ansible_hostname }}.local/admin_backend"
+
+- name: Make sure the pibasho-backend container is created and is running
+  docker_container:
+    name: pibasho-backend
+    image: redbugcollective/pibasho-backend:{{ pibasho_version }}
+    state: 'started'
+    restart_policy: unless-stopped
+    exposed:
+      - '8000'
+    env:
+      VIRTUAL_HOST: "{{ ansible_hostname }}.local"
+      VIRTUAL_PATH: "/admin_backend/"
+      VIRTUAL_DEST: "/"
