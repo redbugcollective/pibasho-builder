@@ -24,3 +24,4 @@
       VIRTUAL_HOST: "{{ ansible_hostname }}.local"
       VIRTUAL_PATH: "/admin_backend/"
       VIRTUAL_DEST: "/"
+      ROCKET_LOG_LEVEL: "debug"
